@@ -19,6 +19,7 @@ import com.starter.starter_demo.crud.entity.Orderline;
 import com.starter.starter_demo.crud.models.CustomerFLNameModel;
 import com.starter.starter_demo.crud.models.CustomerModel;
 import com.starter.starter_demo.crud.models.RegisterRequestModel;
+import com.starter.starter_demo.crud.models.SearchParams;
 import com.starter.starter_demo.crud.service.CustomerService;
 import com.starter.starter_demo.crud.service.OrderlineService;
 
@@ -44,26 +45,26 @@ public class CrudController {
 //		return customerService.findAll();
 //	}
 	
-	@RequestMapping(value = "/flname", method = RequestMethod.GET)
-	public ApiResult findAllFLName() {			
-		return ApiResult.createRespose(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
-	}
+//	@RequestMapping(value = "/flname", method = RequestMethod.GET)
+//	public ApiResult findAllFLName() {			
+//		return ApiResult.createRespose(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
+//	}
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ApiResult findAll() {		
-		return ApiResult.createRespose(customerService.findAll(), "Token to be added later", "Message to be added later");
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public ApiResult findAll(@RequestBody SearchParams searchParams) {		
+		return ApiResult.createRespose(customerService.findAll(searchParams), "Token to be added later", "Message to be added later");
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ApiResult save(@RequestBody RegisterRequestModel registerRequestModel) {
-		return ApiResult.createRespose(customerService.save(registerRequestModel), "Token to be added later", "Message to be added later");
-	}
-	
-	@RequestMapping(value = "/findByCustomerId", method = RequestMethod.GET)
-	public ApiResult findByCustomerId(@RequestParam Long customerId) {			
-		return ApiResult.createRespose(customerService.findByCustomerId(customerId), "Token to be added later", "Message to be added later");		
-	}
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public ApiResult save(@RequestBody RegisterRequestModel registerRequestModel) {
+//		return ApiResult.createRespose(customerService.save(registerRequestModel), "Token to be added later", "Message to be added later");
+//	}
+//	
+//	@RequestMapping(value = "/findByCustomerId", method = RequestMethod.GET)
+//	public ApiResult findByCustomerId(@RequestParam Long customerId) {			
+//		return ApiResult.createRespose(customerService.findByCustomerId(customerId), "Token to be added later", "Message to be added later");		
+//	}
 	
 	@RequestMapping(value = "/findAllInnerJoin", method = RequestMethod.GET)
 	public ApiResult findAllInnerJoin() {		
