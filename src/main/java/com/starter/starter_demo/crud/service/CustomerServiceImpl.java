@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.starter.starter_demo.crud.dao.CrudRepositoryCustomer;
+//import com.starter.starter_demo.crud.dao.Di;
 import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.models.CustomerFLNameModel;
 import com.starter.starter_demo.crud.models.CustomerModel;
@@ -29,6 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
+	
+//	@Autowired
+//	private Di di;
 	
 //	@Override
 //	public List<CustomerFLNameModel> findAllFLName() {
@@ -62,9 +66,13 @@ public class CustomerServiceImpl implements CustomerService {
 //		return customerModel;
 //	}
 	
+//	@Override
+//	public PaginationModel findByFirstnameLike(String firstname) {
+//	
+//	}
+	
 	@Override
-//	public List<PaginationModel> findAll(Pageable pageable) {
-	public PaginationModel findAll(SearchParams searchParams) {
+	public PaginationModel searchFindAll(SearchParams searchParams) {
 		// TODO Auto-generated method stub
 		
 		PaginationModel paginationModel = new PaginationModel();
@@ -83,7 +91,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		Pageable paging = PageRequest.of(page, itemsPerPage, sort);
 		Page<Customer> findAllCustomers;		
-		findAllCustomers = crudRepository.findAll(paging);
+		findAllCustomers = crudRepository.searchFindAll(paging, searchParams.getSearchQuery());
 		
 		findAllCustomers.getContent().forEach(data -> {
 			CustomerModel customerModelTemp = new CustomerModel(data);

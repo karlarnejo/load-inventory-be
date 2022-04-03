@@ -50,10 +50,9 @@ public class CrudController {
 //		return ApiResult.createRespose(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
 //	}
 	
-	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ApiResult findAll(@RequestBody SearchParams searchParams) {		
-		return ApiResult.createRespose(customerService.findAll(searchParams), "Token to be added later", "Message to be added later");
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
+		return ApiResult.createRespose(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
 	}
 	
 //	@RequestMapping(value = "/save", method = RequestMethod.POST)

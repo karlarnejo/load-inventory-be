@@ -13,12 +13,11 @@ import com.starter.starter_demo.crud.models.SearchParams;
 
 public interface CustomerService {
 
-//	public List<CustomerModel> findAll();
-//	public List<PaginationModel> findAll(Pageable pageable);
-	public PaginationModel findAll(SearchParams searchParams);
+	public PaginationModel searchFindAll(SearchParams searchParams);
+	
 //	public List<CustomerFLNameModel> findAllFLName();
 //	public List<CustomerModel> save(RegisterRequestModel registerRequestModel);
 //	public List<CustomerModel> update(CustomerModel customerModel);
 //	public CustomerModel findByCustomerId(Long customerId);
-	public CustomerFLNameModel findProjectionOne(Long customerId);
+	public CustomerFLNameModel findProjectionOne(Long customerId);	
 }
