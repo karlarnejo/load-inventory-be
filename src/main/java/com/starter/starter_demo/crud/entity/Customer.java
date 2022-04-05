@@ -19,8 +19,7 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long customerId;
+	private String customerId;
 	
 	private String firstName;
 	
@@ -41,12 +40,12 @@ public class Customer implements Serializable {
 		
 	}
 
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(String customerId2) {
+		this.customerId = customerId2;
 	}
 
 	public String getFirstName() {

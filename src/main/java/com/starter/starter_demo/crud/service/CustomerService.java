@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.starter.starter_demo.crud.models.CustomerFLNameModel;
 import com.starter.starter_demo.crud.models.CustomerModel;
+import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.PaginationModel;
 import com.starter.starter_demo.crud.models.RegisterRequestModel;
 import com.starter.starter_demo.crud.models.SearchParams;
@@ -14,6 +15,7 @@ import com.starter.starter_demo.crud.models.SearchParams;
 public interface CustomerService {
 
 	public PaginationModel searchFindAll(SearchParams searchParams);
+	public Void deleteByCustomerId(DeleteCustomerModel customerId);
 	
 //	public List<CustomerFLNameModel> findAllFLName();
 //	public List<CustomerModel> save(RegisterRequestModel registerRequestModel);

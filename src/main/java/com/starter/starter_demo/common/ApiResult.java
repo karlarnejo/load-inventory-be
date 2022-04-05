@@ -17,7 +17,11 @@ public class ApiResult {
 		this.message = message;
 	}
 	
-	public static ApiResult createRespose(Object data, String token, String message) {
+	public static ApiResult createResponse(Object data, String token, String message) {
+		return new ApiResult(data, token, message);
+	}
+	
+	public static ApiResult createResponse(Void data, String token, String message) {
 		return new ApiResult(data, token, message);
 	}
 	

@@ -37,6 +37,6 @@ public class JwtAuthenticationController {
 		UserDetailsModel userDetailsModel = new UserDetailsModel();
 		userDetailsModel.setUsername(userDetails.getUsername());
 		
-		return ApiResult.createRespose(userDetailsModel, token, "Message to be added later");
+		return ApiResult.createResponse(userDetailsModel, token, "Message to be added later");
 	}
 }

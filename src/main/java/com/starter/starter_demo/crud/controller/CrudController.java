@@ -18,13 +18,14 @@ import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.entity.Orderline;
 import com.starter.starter_demo.crud.models.CustomerFLNameModel;
 import com.starter.starter_demo.crud.models.CustomerModel;
+import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.RegisterRequestModel;
 import com.starter.starter_demo.crud.models.SearchParams;
 import com.starter.starter_demo.crud.service.CustomerService;
 import com.starter.starter_demo.crud.service.OrderlineService;
 
 @RestController
-@RequestMapping("/crud")
+@RequestMapping("/crud/customer")
 @CrossOrigin(origins="*", maxAge=3600)
 public class CrudController {
 	
@@ -47,32 +48,37 @@ public class CrudController {
 	
 //	@RequestMapping(value = "/flname", method = RequestMethod.GET)
 //	public ApiResult findAllFLName() {			
-//		return ApiResult.createRespose(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
+//		return ApiResult.createResponse(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
 //	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
-		return ApiResult.createRespose(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	public ApiResult DeleteByCustomerId(@RequestBody DeleteCustomerModel customerId) {		
+		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "Token to be added later", "Message to be added later");
 	}
 	
 //	@RequestMapping(value = "/save", method = RequestMethod.POST)
 //	public ApiResult save(@RequestBody RegisterRequestModel registerRequestModel) {
-//		return ApiResult.createRespose(customerService.save(registerRequestModel), "Token to be added later", "Message to be added later");
+//		return ApiResult.createResponse(customerService.save(registerRequestModel), "Token to be added later", "Message to be added later");
 //	}
 //	
 //	@RequestMapping(value = "/findByCustomerId", method = RequestMethod.GET)
 //	public ApiResult findByCustomerId(@RequestParam Long customerId) {			
-//		return ApiResult.createRespose(customerService.findByCustomerId(customerId), "Token to be added later", "Message to be added later");		
+//		return ApiResult.createResponse(customerService.findByCustomerId(customerId), "Token to be added later", "Message to be added later");		
 //	}
 	
 	@RequestMapping(value = "/findAllInnerJoin", method = RequestMethod.GET)
 	public ApiResult findAllInnerJoin() {		
-		return ApiResult.createRespose(orderlineService.findAllInnerJoin(), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(orderlineService.findAllInnerJoin(), "Token to be added later", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/findAllInnerJoinWhere", method = RequestMethod.GET)
 	public ApiResult findAllInnerJoinWhere(@RequestParam Long customerId) {			
-		return ApiResult.createRespose(orderlineService.findAllInnerJoinWhere(customerId), "Token to be added later", "Message to be added later");		
+		return ApiResult.createResponse(orderlineService.findAllInnerJoinWhere(customerId), "Token to be added later", "Message to be added later");		
 	}
 	
 	@RequestMapping(value = "/findProjectionOne", method = RequestMethod.GET)

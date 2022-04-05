@@ -17,6 +17,7 @@ import com.starter.starter_demo.crud.dao.CrudRepositoryCustomer;
 import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.models.CustomerFLNameModel;
 import com.starter.starter_demo.crud.models.CustomerModel;
+import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.PaginationModel;
 import com.starter.starter_demo.crud.models.RegisterRequestModel;
 import com.starter.starter_demo.crud.models.SearchParams;
@@ -47,28 +48,6 @@ public class CustomerServiceImpl implements CustomerService {
 //		});
 //		
 //		return customerModel;
-//	}
-
-//	@Override
-//	public List<CustomerModel> findAll() {
-//		// TODO Auto-generated method stub
-//		
-//		List<CustomerModel> customerModel = new ArrayList<CustomerModel>();
-//
-//		Pageable pageable = PageRequest.of(0, 10);
-//
-//		crudRepository.findAll(pageable).forEach(data -> {
-//			CustomerModel tempModel = new CustomerModel(data);
-//			
-//			customerModel.add(tempModel);
-//		});
-//		
-//		return customerModel;
-//	}
-	
-//	@Override
-//	public PaginationModel findByFirstnameLike(String firstname) {
-//	
 //	}
 	
 	@Override
@@ -104,6 +83,13 @@ public class CustomerServiceImpl implements CustomerService {
 		paginationModel.setTotalPages(findAllCustomers.getTotalPages());
 		
 		return paginationModel;
+	}
+	
+	@Override
+	public Void deleteByCustomerId(DeleteCustomerModel customerId) {
+		crudRepository.deleteByCustomerId(customerId.getCustomerId());
+		
+		return null;
 	}
 
 //	@Override

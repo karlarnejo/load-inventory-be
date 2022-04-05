@@ -4,7 +4,7 @@ import com.starter.starter_demo.crud.entity.Customer;
 
 public class CustomerModel {
 	
-	private Long customerId;
+	private String customerId;
 	private String firstName;
 	private String lastName;
 	private String middleName;
@@ -60,10 +60,10 @@ public class CustomerModel {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	public String getGender() {
