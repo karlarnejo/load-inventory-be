@@ -61,10 +61,16 @@ public class CrudController {
 		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "Token to be added later", "Message to be added later");
 	}
 	
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//	public ApiResult save(@RequestBody RegisterRequestModel registerRequestModel) {
-//		return ApiResult.createResponse(customerService.save(registerRequestModel), "Token to be added later", "Message to be added later");
-//	}
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ApiResult saveCustomer(@RequestBody CustomerModel customerModel) {
+		return ApiResult.createResponse(customerService.saveCustomer(customerModel), "Token to be added later", "Message to be added later");
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ApiResult editCustomer(@RequestBody CustomerModel customerModel) {
+		return ApiResult.createResponse(customerService.updateCustomer(customerModel), "Token to be added later", "Message to be added later");
+	}
+	
 //	
 //	@RequestMapping(value = "/findByCustomerId", method = RequestMethod.GET)
 //	public ApiResult findByCustomerId(@RequestParam Long customerId) {			

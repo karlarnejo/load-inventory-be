@@ -18,8 +18,8 @@ public interface CustomerService {
 	public Void deleteByCustomerId(DeleteCustomerModel customerId);
 	
 //	public List<CustomerFLNameModel> findAllFLName();
-//	public List<CustomerModel> save(RegisterRequestModel registerRequestModel);
-//	public List<CustomerModel> update(CustomerModel customerModel);
+	public Void updateCustomer(CustomerModel customerModel);
 //	public CustomerModel findByCustomerId(Long customerId);
 	public CustomerFLNameModel findProjectionOne(Long customerId);	
+	public Void saveCustomer(CustomerModel customerModel);
 }

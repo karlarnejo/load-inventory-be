@@ -91,26 +91,26 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return null;
 	}
+	
+	@Override
+	public Void saveCustomer(CustomerModel customerModel) {
+		
+		//TODO: generate primary key
+		
+		customerModel.setCustomerId("sample1");
+		crudRepository.saveAndFlush(customerModel.toEntity());
+		
+		return null;
+	}
 
-//	@Override
-//	public List<CustomerModel> save(RegisterRequestModel registerRequestModel) {
-//		// TODO Auto-generated method stub
-//		
-//		RegisterRequestModel toSave = registerRequestModel;
-//		
-//		crudRepository.saveAndFlush(toSave.toEntity());
-//		
-//		return findAll();
-//	}
-
-//	@Override
-//	public List<CustomerModel> update(CustomerModel customerModel) {
-//		// TODO Auto-generated method stub
-//		
-//		crudRepository.saveAndFlush(customerModel.toEntity());
-//		
-//		return null;
-//	}
+	@Override
+	public Void updateCustomer(CustomerModel customerModel) {
+		// TODO Auto-generated method stub
+		
+		crudRepository.saveAndFlush(customerModel.toEntity());
+		
+		return null;
+	}
 
 //	@Override
 //	public CustomerModel findByCustomerId(Long customerId) {
