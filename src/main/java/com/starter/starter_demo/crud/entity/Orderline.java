@@ -16,36 +16,33 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="orderline")
-@NamedQuery(name="Orderline.findAll", query="SELECT u FROM Orderline u")
+@NamedQuery(name="Orderline.findAll", query="SELECT o FROM Orderline o")
 public class Orderline implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long orderlineId;
-	
+	private String orderlineId;
 	private String orderCode;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date orderDate;
-	
 	private int status;
+	private String number;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedAt;
 	
 	@ManyToOne
-	@JoinColumn(name = "customerid", referencedColumnName = "customerid")
+	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
 	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name = "promoId", referencedColumnName = "customerId")
+	private Promo promo;
 			
 	public Orderline() {
 		
-	}
-
-	public Long getOrderlineId() {
-		return orderlineId;
-	}
-
-	public void setOrderlineId(Long orderlineId) {
-		this.orderlineId = orderlineId;
 	}
 
 	public String getOrderCode() {
@@ -79,5 +76,49 @@ public class Orderline implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getOrderlineId() {
+		return orderlineId;
+	}
+
+	public void setOrderlineId(String orderlineId) {
+		this.orderlineId = orderlineId;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Promo getPromo() {
+		return promo;
+	}
+
+	public void setPromo(Promo promo) {
+		this.promo = promo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}	
 }
