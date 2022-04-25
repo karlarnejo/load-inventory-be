@@ -15,7 +15,10 @@ import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
 import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.entity.Orderline;
 import com.starter.starter_demo.crud.models.CustomerModel;
+import com.starter.starter_demo.crud.models.DeleteCustomerModel;
+import com.starter.starter_demo.crud.models.DeleteOrderModel;
 import com.starter.starter_demo.crud.models.OrderlineCustomerModel;
+import com.starter.starter_demo.crud.models.OrderlineModel;
 import com.starter.starter_demo.crud.models.PaginationModel;
 import com.starter.starter_demo.crud.models.SearchParams;
 
@@ -72,14 +75,29 @@ public class OrderlineServiceImpl implements OrderlineService {
 //	}
 
 	@Override
-	public Void updateOrderline(CustomerModel customerModel) {
-		// TODO Auto-generated method stub
+	public Void deleteByOrderlineId(DeleteOrderModel orderlineId) {
+		crudRepositoryOrderline.deleteByOrderlineId(orderlineId.getOrderlineId());
+		
+		return null;
+	}
+	
+	@Override
+	public Void saveOrderline(OrderlineModel orderlineModel) {
+		
+		//TODO: generate primary key
+		
+		orderlineModel.setOrderlineId("sample1");
+		crudRepositoryOrderline.saveAndFlush(orderlineModel.toEntity());
+		
 		return null;
 	}
 
 	@Override
-	public Void saveOrderline(CustomerModel customerModel) {
+	public Void updateOrderline(OrderlineModel orderlineModel) {
 		// TODO Auto-generated method stub
+		
+		crudRepositoryOrderline.saveAndFlush(orderlineModel.toEntity());
+		
 		return null;
 	}
 }

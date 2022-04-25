@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.starter.starter_demo.common.ApiResult;
 import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
+import com.starter.starter_demo.crud.models.CustomerModel;
+import com.starter.starter_demo.crud.models.DeleteCustomerModel;
+import com.starter.starter_demo.crud.models.DeleteOrderModel;
+import com.starter.starter_demo.crud.models.OrderlineModel;
 import com.starter.starter_demo.crud.models.SearchParams;
 import com.starter.starter_demo.crud.service.OrderlineService;
 
@@ -21,9 +25,24 @@ public class CrudOrderlineController {
 	@Autowired
 	private OrderlineService orderlineService;
 	
-	@RequestMapping(value = "/findAllInnerJoin", method = RequestMethod.POST)
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
 		return ApiResult.createResponse(orderlineService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	public ApiResult DeleteByCustomerId(@RequestBody DeleteOrderModel orderlineId) {		
+		return ApiResult.createResponse(orderlineService.deleteByOrderlineId(orderlineId), "Token to be added later", "Message to be added later");
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ApiResult saveCustomer(@RequestBody OrderlineModel orderlineModel) {
+		return ApiResult.createResponse(orderlineService.saveOrderline(orderlineModel), "Token to be added later", "Message to be added later");
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ApiResult editCustomer(@RequestBody OrderlineModel orderlineModel) {
+		return ApiResult.createResponse(orderlineService.updateOrderline(orderlineModel), "Token to be added later", "Message to be added later");
 	}
 	
 //	@RequestMapping(value = "/findAllInnerJoinWhere", method = RequestMethod.GET)

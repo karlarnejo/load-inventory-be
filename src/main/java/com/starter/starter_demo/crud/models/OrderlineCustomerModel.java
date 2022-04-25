@@ -5,6 +5,7 @@ import java.util.Date;
 import com.starter.starter_demo.crud.entity.Orderline;
 
 public class OrderlineCustomerModel {
+	private String orderLineId;
 	private String firstName;
 	private String lastName;
 	private String middleName;
@@ -20,6 +21,7 @@ public class OrderlineCustomerModel {
 	}
 	
 	public OrderlineCustomerModel(Orderline orderlineEntity) {
+		this.orderLineId = orderlineEntity.getOrderlineId();
 		this.firstName = orderlineEntity.getCustomer().getFirstName();
 		this.lastName = orderlineEntity.getCustomer().getLastName();
 		this.middleName = orderlineEntity.getCustomer().getMiddleName();
@@ -111,5 +113,13 @@ public class OrderlineCustomerModel {
 
 	public void setProviderName(String providerName) {
 		this.providerName = providerName;
+	}
+
+	public String getOrderLineId() {
+		return orderLineId;
+	}
+
+	public void setOrderLineId(String orderLineId) {
+		this.orderLineId = orderLineId;
 	}
 }
