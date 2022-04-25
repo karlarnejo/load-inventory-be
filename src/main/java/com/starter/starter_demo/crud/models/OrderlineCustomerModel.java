@@ -5,10 +5,11 @@ import java.util.Date;
 import com.starter.starter_demo.crud.entity.Orderline;
 
 public class OrderlineCustomerModel {
-	private String orderLineId;
+	private String orderlineId;
 	private String firstName;
 	private String lastName;
 	private String middleName;
+	private String fullName;
 	private String orderCode;
 	private Date createdAt;
 	private String promoName;
@@ -21,10 +22,13 @@ public class OrderlineCustomerModel {
 	}
 	
 	public OrderlineCustomerModel(Orderline orderlineEntity) {
-		this.orderLineId = orderlineEntity.getOrderlineId();
+		this.orderlineId = orderlineEntity.getOrderlineId();
 		this.firstName = orderlineEntity.getCustomer().getFirstName();
 		this.lastName = orderlineEntity.getCustomer().getLastName();
 		this.middleName = orderlineEntity.getCustomer().getMiddleName();
+		this.fullName = orderlineEntity.getCustomer().getFirstName() +
+				orderlineEntity.getCustomer().getMiddleName() +
+				orderlineEntity.getCustomer().getLastName();
 		this.orderCode = orderlineEntity.getOrderCode();
 		this.createdAt = orderlineEntity.getCreatedAt();
 		this.promoName = orderlineEntity.getPromo().getPromoName();
@@ -32,16 +36,6 @@ public class OrderlineCustomerModel {
 		this.providerName = orderlineEntity.getPromo().getProvider().getProviderName();
 		this.status = orderlineEntity.getStatus();
 	}
-	
-//	public OrderlineCustomerModel(String firstName, String lastName, String middleName, 
-//			String orderCode, int status, Date createdAt) {
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.middleName = middleName;
-//		this.orderCode = orderCode;
-//		this.status = status;
-//		this.createdAt = createdAt;
-//	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -115,11 +109,19 @@ public class OrderlineCustomerModel {
 		this.providerName = providerName;
 	}
 
-	public String getOrderLineId() {
-		return orderLineId;
+	public String getOrderlineId() {
+		return orderlineId;
 	}
 
-	public void setOrderLineId(String orderLineId) {
-		this.orderLineId = orderLineId;
+	public void setOrderlineId(String orderlineId) {
+		this.orderlineId = orderlineId;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 }
