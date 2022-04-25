@@ -24,8 +24,6 @@ public class Orderline implements Serializable {
 	@Id
 	private String orderlineId;
 	private String orderCode;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date orderDate;
 	private int status;
 	private String number;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -38,7 +36,7 @@ public class Orderline implements Serializable {
 	private Customer customer;
 	
 	@ManyToOne
-	@JoinColumn(name = "promoId", referencedColumnName = "customerId")
+	@JoinColumn(name = "promoId", referencedColumnName = "promoId")
 	private Promo promo;
 			
 	public Orderline() {
@@ -52,15 +50,6 @@ public class Orderline implements Serializable {
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
-
-	public Date getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-
 
 	public int getStatus() {
 		return status;

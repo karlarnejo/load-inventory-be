@@ -27,7 +27,7 @@ public class Provider {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 	
-	@OneToMany(mappedBy = "promo")
+	@OneToMany(mappedBy = "provider")
 	private List<Promo> promo;
 	
 	public Provider() {

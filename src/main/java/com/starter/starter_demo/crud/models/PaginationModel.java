@@ -1,10 +1,11 @@
 package com.starter.starter_demo.crud.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaginationModel {
 
-		private List<CustomerModel> data;
+		private List<Object> data;
 		private int itemsPerPage;
 		private int totalPages;
 		private int pageInput;
@@ -13,12 +14,12 @@ public class PaginationModel {
 			
 		}
 
-		public List<CustomerModel> getData() {
+		public List<Object> getData() {
 			return data;
 		}
 
-		public void setData(List<CustomerModel> data) {
-			this.data = data;
+		public void setData(List<Object> data) {
+			this.data = new ArrayList<>(data);
 		}
 
 		public int getItemsPerPage() {

@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		
 		PaginationModel paginationModel = new PaginationModel();
-		List<CustomerModel> customerModel = new ArrayList<CustomerModel>();
+		List<Object> customerModel = new ArrayList<Object>();
 
 		/*
 		 * of(page, itemsPerPage) 

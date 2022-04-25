@@ -10,7 +10,7 @@ public class JoinSpecificColumns {
 	private String middleName;
 	private String orderCode;
 	private int status;
-	private Date orderDate;
+	private Date createdAt;
 	
 	public JoinSpecificColumns() {
 		
@@ -22,7 +22,7 @@ public class JoinSpecificColumns {
 		this.middleName = orderlineEntity.getCustomer().getMiddleName();
 		this.orderCode = orderlineEntity.getOrderCode();
 		this.status = orderlineEntity.getStatus();
-		this.orderDate = orderlineEntity.getOrderDate();
+		this.createdAt = orderlineEntity.getCreatedAt();
 	}
 	
 	public String getFirstName() {
@@ -65,11 +65,11 @@ public class JoinSpecificColumns {
 		this.status = status;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 }

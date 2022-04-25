@@ -9,8 +9,11 @@ public class OrderlineCustomerModel {
 	private String lastName;
 	private String middleName;
 	private String orderCode;
+	private Date createdAt;
+	private String promoName;
+	private String price;
+	private String providerName;
 	private int status;
-	private Date orderDate;
 	
 	public OrderlineCustomerModel() {
 		
@@ -21,18 +24,22 @@ public class OrderlineCustomerModel {
 		this.lastName = orderlineEntity.getCustomer().getLastName();
 		this.middleName = orderlineEntity.getCustomer().getMiddleName();
 		this.orderCode = orderlineEntity.getOrderCode();
+		this.createdAt = orderlineEntity.getCreatedAt();
+		this.promoName = orderlineEntity.getPromo().getPromoName();
+		this.price = orderlineEntity.getPromo().getPrice();
+		this.providerName = orderlineEntity.getPromo().getProvider().getProviderName();
 		this.status = orderlineEntity.getStatus();
-		this.orderDate = orderlineEntity.getOrderDate();
 	}
 	
-	public OrderlineCustomerModel(String firstName, String lastName, String middleName, String orderCode, int status, Date orderDate) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.middleName = middleName;
-		this.orderCode = orderCode;
-		this.status = status;
-		this.orderDate = orderDate;
-	}
+//	public OrderlineCustomerModel(String firstName, String lastName, String middleName, 
+//			String orderCode, int status, Date createdAt) {
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.middleName = middleName;
+//		this.orderCode = orderCode;
+//		this.status = status;
+//		this.createdAt = createdAt;
+//	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -74,11 +81,35 @@ public class OrderlineCustomerModel {
 		this.status = status;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getPromoName() {
+		return promoName;
+	}
+
+	public void setPromoName(String promoName) {
+		this.promoName = promoName;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+	public void setProviderName(String providerName) {
+		this.providerName = providerName;
 	}
 }
