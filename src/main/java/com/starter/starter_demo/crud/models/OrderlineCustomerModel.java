@@ -9,13 +9,16 @@ public class OrderlineCustomerModel {
 	private String firstName;
 	private String lastName;
 	private String middleName;
-	private String fullName;
+	private String name;
 	private String orderCode;
 	private Date createdAt;
+	private String number;
 	private String promoName;
 	private String price;
 	private String providerName;
+	private String customerId;
 	private int status;
+	private String promoId;
 	
 	public OrderlineCustomerModel() {
 		
@@ -26,15 +29,18 @@ public class OrderlineCustomerModel {
 		this.firstName = orderlineEntity.getCustomer().getFirstName();
 		this.lastName = orderlineEntity.getCustomer().getLastName();
 		this.middleName = orderlineEntity.getCustomer().getMiddleName();
-		this.fullName = orderlineEntity.getCustomer().getFirstName() +
-				orderlineEntity.getCustomer().getMiddleName() +
+		this.name = orderlineEntity.getCustomer().getFirstName() + " " +
+				orderlineEntity.getCustomer().getMiddleName() + " " +
 				orderlineEntity.getCustomer().getLastName();
 		this.orderCode = orderlineEntity.getOrderCode();
 		this.createdAt = orderlineEntity.getCreatedAt();
 		this.promoName = orderlineEntity.getPromo().getPromoName();
 		this.price = orderlineEntity.getPromo().getPrice();
 		this.providerName = orderlineEntity.getPromo().getProvider().getProviderName();
+		this.customerId = orderlineEntity.getCustomer().getCustomerId();
 		this.status = orderlineEntity.getStatus();
+		this.number = orderlineEntity.getNumber();
+		this.promoId = orderlineEntity.getPromo().getPromoId();
 	}
 	
 	public String getFirstName() {
@@ -117,11 +123,35 @@ public class OrderlineCustomerModel {
 		this.orderlineId = orderlineId;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getPromoId() {
+		return promoId;
+	}
+
+	public void setPromoId(String promoId) {
+		this.promoId = promoId;
 	}
 }

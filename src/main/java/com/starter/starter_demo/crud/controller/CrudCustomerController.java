@@ -16,10 +16,11 @@ import com.starter.starter_demo.crud.dao.CrudRepositoryCustomer;
 import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
 import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.entity.Orderline;
-import com.starter.starter_demo.crud.models.CustomerFLNameModel;
+import com.starter.starter_demo.crud.models.DropdownChoices;
 import com.starter.starter_demo.crud.models.CustomerModel;
 import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.SearchParams;
+import com.starter.starter_demo.crud.models.SearchQuery;
 import com.starter.starter_demo.crud.service.CustomerService;
 
 @RestController
@@ -48,6 +49,11 @@ public class CrudCustomerController {
 		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
 	}
 	
+	@RequestMapping(value = "/names", method = RequestMethod.POST)
+	public ApiResult findByCustomerName(@RequestBody SearchQuery searchQuery) {		
+		return ApiResult.createResponse(customerService.findByCustomerName(searchQuery), "Token to be added later", "Message to be added later");
+	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public ApiResult DeleteByCustomerId(@RequestBody DeleteCustomerModel customerId) {		
 		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "Token to be added later", "Message to be added later");
@@ -70,7 +76,7 @@ public class CrudCustomerController {
 //	}
 	
 	@RequestMapping(value = "/findProjectionOne", method = RequestMethod.GET)
-	public CustomerFLNameModel findProjectionOne(@RequestParam Long customerId) {			
+	public DropdownChoices findProjectionOne(@RequestParam Long customerId) {			
 		return customerService.findProjectionOne(customerId);
 	}
 	

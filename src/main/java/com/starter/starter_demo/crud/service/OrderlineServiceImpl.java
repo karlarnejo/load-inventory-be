@@ -44,6 +44,10 @@ public class OrderlineServiceImpl implements OrderlineService {
 		int page = (searchParams.getPageInput()-1);
 		int itemsPerPage = searchParams.getItemsPerPage();
 		
+//		if(searchParams.getSortItem().equals("")) {
+//			
+//		}
+		
 		//use entity.property to sort from joined tables.
 		Sort sort = searchParams.getSortDirection().equals("Ascending") ? Sort.by(searchParams.getSortItem()).ascending() :
 			Sort.by(searchParams.getSortItem()).descending();

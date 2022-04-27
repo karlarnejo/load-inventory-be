@@ -15,12 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.starter.starter_demo.crud.dao.CrudRepositoryCustomer;
 //import com.starter.starter_demo.crud.dao.Di;
 import com.starter.starter_demo.crud.entity.Customer;
-import com.starter.starter_demo.crud.models.CustomerFLNameModel;
+import com.starter.starter_demo.crud.models.DropdownChoices;
 import com.starter.starter_demo.crud.models.CustomerModel;
 import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.PaginationModel;
 import com.starter.starter_demo.crud.models.RegisterRequestModel;
 import com.starter.starter_demo.crud.models.SearchParams;
+import com.starter.starter_demo.crud.models.SearchQuery;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -86,6 +87,22 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	@Override
+	public List<DropdownChoices> findByCustomerName(SearchQuery searchQuery) {
+		// TODO Auto-generated method stub
+		List<DropdownChoices> dropdownChoices = new ArrayList<DropdownChoices>();
+		
+		if(!searchQuery.getSearchQuery().equals("")) {
+			crudRepository.findByCustomerName(searchQuery.getSearchQuery()).forEach(data -> {
+				DropdownChoices tempModel = new DropdownChoices(data);
+				
+				dropdownChoices.add(tempModel);
+			});
+		}
+		
+		return dropdownChoices;		
+	}
+	
+	@Override
 	public Void deleteByCustomerId(DeleteCustomerModel customerId) {
 		crudRepository.deleteByCustomerId(customerId.getCustomerId());
 		
@@ -121,10 +138,11 @@ public class CustomerServiceImpl implements CustomerService {
 //		return customerModel;
 //	}
 
+	//An example using projection.
 	@Override
-	public CustomerFLNameModel findProjectionOne(Long customerId) {
+	public DropdownChoices findProjectionOne(Long customerId) {
 		// TODO Auto-generated method stub
-		CustomerFLNameModel customerFLNameModel = new CustomerFLNameModel(crudRepository.findProjectionOne(customerId));
+		DropdownChoices customerFLNameModel = new DropdownChoices(crudRepository.findProjectionOne(customerId));
 		
 		return customerFLNameModel;
 	}
