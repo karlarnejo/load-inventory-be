@@ -43,4 +43,8 @@ public interface CrudRepositoryCustomer extends JpaRepository<Customer, Long> {
 	
 	@Query("SELECT c.firstName FROM Customer c WHERE c.customerId = ?1")
 	public Customer findSpecific(Long customerId);
+	
+	@Query("SELECT o from Customer o "
+			+ "WHERE o.customerId=:customerId")
+	public Customer findByCustomerId(@Param("customerId") String customerId);
 }

@@ -44,10 +44,6 @@ public class OrderlineServiceImpl implements OrderlineService {
 		int page = (searchParams.getPageInput()-1);
 		int itemsPerPage = searchParams.getItemsPerPage();
 		
-//		if(searchParams.getSortItem().equals("")) {
-//			
-//		}
-		
 		//use entity.property to sort from joined tables.
 		Sort sort = searchParams.getSortDirection().equals("Ascending") ? Sort.by(searchParams.getSortItem()).ascending() :
 			Sort.by(searchParams.getSortItem()).descending();
@@ -99,8 +95,11 @@ public class OrderlineServiceImpl implements OrderlineService {
 	@Override
 	public Void updateOrderline(OrderlineModel orderlineModel) {
 		// TODO Auto-generated method stub
+//		crudRepositoryOrderline.saveAndFlush(orderlineModel.toEntity());
 		
-		crudRepositoryOrderline.saveAndFlush(orderlineModel.toEntity());
+		Orderline orderline = crudRepositoryOrderline.findByOrderlineId(orderlineModel.getOrderlineId());
+		
+		crudRepositoryOrderline.saveAndFlush(orderlineModel.partialUpdate(orderline));
 		
 		return null;
 	}

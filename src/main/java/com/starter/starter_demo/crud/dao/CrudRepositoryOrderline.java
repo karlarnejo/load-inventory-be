@@ -29,6 +29,10 @@ public interface CrudRepositoryOrderline extends JpaRepository<Orderline, Long> 
 	@Query("DELETE FROM Orderline c WHERE c.orderlineId=:orderlineId")
 	public void deleteByOrderlineId(@Param("orderlineId") String orderlineId);
 
+	@Query("SELECT o from Orderline o "
+			+ "WHERE o.orderlineId=:orderlineId")
+	public Orderline findByOrderlineId(@Param("orderlineId") String orderlineId);
+	
 //	@Query("SELECT o FROM Orderline o JOIN o.customer c WHERE c.customerId = ?1")
 //	@Query("SELECT new com.starter.starter_demo.crud.models.OrderlineCustomerModel(c.firstName, c.lastName, c.middleName, o.orderCode, o.status, o.createdAt) FROM Orderline o JOIN o.customer c WHERE c.customerId = ?1")
 //	public Orderline findAllInnerJoinWhere(Long customerId);	

@@ -9,6 +9,7 @@ public class OrderlineCustomerModel {
 	private String name;
 	private String orderCode;
 	private Date createdAt;
+	private Date updatedAt;
 	private String number;
 	private String promoName;
 	private float discount;
@@ -30,6 +31,7 @@ public class OrderlineCustomerModel {
 				orderlineEntity.getCustomer().getLastName();
 		this.orderCode = orderlineEntity.getOrderCode();
 		this.createdAt = orderlineEntity.getCreatedAt();
+		this.updatedAt = orderlineEntity.getUpdatedAt();
 		this.promoName = orderlineEntity.getPromo().getPromoName();
 		this.price = orderlineEntity.getPromo().getPrice();
 		this.providerName = orderlineEntity.getPromo().getProvider().getProviderName();
@@ -155,5 +157,13 @@ public class OrderlineCustomerModel {
 
 	public void setStatusMeaning(String statusMeaning) {
 		this.statusMeaning = statusMeaning;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

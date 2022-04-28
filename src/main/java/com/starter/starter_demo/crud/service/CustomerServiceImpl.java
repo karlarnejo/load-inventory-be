@@ -123,8 +123,9 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Void updateCustomer(CustomerModel customerModel) {
 		// TODO Auto-generated method stub
+		Customer customer = crudRepository.findByCustomerId(customerModel.getCustomerId());
 		
-		crudRepository.saveAndFlush(customerModel.toEntity());
+		crudRepository.saveAndFlush(customerModel.partialUpdate(customer));
 		
 		return null;
 	}

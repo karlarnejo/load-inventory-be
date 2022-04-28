@@ -42,6 +42,19 @@ public class CustomerModel {
 		return customerEntity;
 	}
 	
+	public Customer partialUpdate(Customer customerEntity) {
+		
+		customerEntity.setFirstName(this.firstName);
+		customerEntity.setLastName(this.lastName);
+		customerEntity.setMiddleName(this.middleName);
+		customerEntity.setCustomerId(this.customerId);
+		customerEntity.setGender(this.gender);
+		customerEntity.setContactNo(this.contactNo);
+		customerEntity.setAddress(this.address);
+		
+		return customerEntity;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
