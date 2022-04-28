@@ -6,19 +6,18 @@ import com.starter.starter_demo.crud.entity.Orderline;
 
 public class OrderlineCustomerModel {
 	private String orderlineId;
-	private String firstName;
-	private String lastName;
-	private String middleName;
 	private String name;
 	private String orderCode;
 	private Date createdAt;
 	private String number;
 	private String promoName;
-	private String price;
+	private float discount;
+	private float price;
 	private String providerName;
 	private String customerId;
 	private int status;
 	private String promoId;
+	private String statusMeaning;
 	
 	public OrderlineCustomerModel() {
 		
@@ -26,9 +25,6 @@ public class OrderlineCustomerModel {
 	
 	public OrderlineCustomerModel(Orderline orderlineEntity) {
 		this.orderlineId = orderlineEntity.getOrderlineId();
-		this.firstName = orderlineEntity.getCustomer().getFirstName();
-		this.lastName = orderlineEntity.getCustomer().getLastName();
-		this.middleName = orderlineEntity.getCustomer().getMiddleName();
 		this.name = orderlineEntity.getCustomer().getFirstName() + " " +
 				orderlineEntity.getCustomer().getMiddleName() + " " +
 				orderlineEntity.getCustomer().getLastName();
@@ -41,31 +37,21 @@ public class OrderlineCustomerModel {
 		this.status = orderlineEntity.getStatus();
 		this.number = orderlineEntity.getNumber();
 		this.promoId = orderlineEntity.getPromo().getPromoId();
+		this.discount = orderlineEntity.getDiscount();
+		this.statusMeaning = statusMeaning(orderlineEntity.getStatus());
 	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+	private String statusMeaning(int statusParam) {
+		if(statusParam == 1) {
+			return "Completed";
+		}
+		else if(statusParam == 2) {
+			return "Ongoing";
+		}
+		else {
+			return "Failed";
+		}
+	};
 
 	public String getOrderCode() {
 		return orderCode;
@@ -99,11 +85,11 @@ public class OrderlineCustomerModel {
 		this.promoName = promoName;
 	}
 
-	public String getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
@@ -153,5 +139,21 @@ public class OrderlineCustomerModel {
 
 	public void setPromoId(String promoId) {
 		this.promoId = promoId;
+	}
+
+	public float getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(float discount) {
+		this.discount = discount;
+	}
+
+	public String getStatusMeaning() {
+		return statusMeaning;
+	}
+
+	public void setStatusMeaning(String statusMeaning) {
+		this.statusMeaning = statusMeaning;
 	}
 }

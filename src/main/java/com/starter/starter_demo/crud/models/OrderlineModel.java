@@ -15,8 +15,17 @@ public class OrderlineModel {
 	private String customerId;
 	private String promoId;
 	private String orderCode;
+	/* 
+	 * Just so createdAt is not blank on update
+	 * Replace this later using triggers in postgresql.
+	 * 
+	 * */
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
 	private int status;
+	private float discount;
 	private String number;
+	private Date updatedAt;
 	
 	public String getOrderlineId() {
 		return orderlineId;
@@ -54,6 +63,26 @@ public class OrderlineModel {
 	public void setPromoId(String promoId) {
 		this.promoId = promoId;
 	}
+	public float getDiscount() {
+		return discount;
+	}
+	public void setDiscount(float discount) {
+		this.discount = discount;
+	}
+	
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
 	public Orderline toEntity() {
 		Orderline orderlineEntity = new Orderline();
 		Customer customerEntity = new Customer();
@@ -66,6 +95,9 @@ public class OrderlineModel {
 		orderlineEntity.setOrderCode(this.orderCode);
 		orderlineEntity.setStatus(this.status);
 		orderlineEntity.setNumber(this.number);
+		orderlineEntity.setDiscount(this.discount);
+		orderlineEntity.setCreatedAt(this.createdAt);
+		orderlineEntity.setUpdatedAt(this.updatedAt);
 		orderlineEntity.setCustomer(customerEntity);
 		orderlineEntity.setPromo(promoEntity);
 		
