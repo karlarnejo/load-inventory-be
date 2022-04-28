@@ -95,7 +95,6 @@ public class OrderlineServiceImpl implements OrderlineService {
 	@Override
 	public Void updateOrderline(OrderlineModel orderlineModel) {
 		// TODO Auto-generated method stub
-//		crudRepositoryOrderline.saveAndFlush(orderlineModel.toEntity());
 		
 		Orderline orderline = crudRepositoryOrderline.findByOrderlineId(orderlineModel.getOrderlineId());
 		
