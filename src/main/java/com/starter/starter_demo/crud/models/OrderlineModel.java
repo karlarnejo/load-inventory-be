@@ -18,6 +18,7 @@ public class OrderlineModel {
 	private float price;
 	private String number;
 	private Date updatedAt;
+	private Date createdAt;
 
 	public String getOrderlineId() {
 		return orderlineId;
@@ -55,6 +56,18 @@ public class OrderlineModel {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 	
 	public Orderline toEntity() {
 		Orderline orderlineEntity = new Orderline();
@@ -64,9 +77,11 @@ public class OrderlineModel {
 		customerEntity.setCustomerId(getCustomerId());
 		promoEntity.setPromoId(getPromoId());
 		
+		orderlineEntity.setOrderlineId("sample1");
 		orderlineEntity.setStatus(this.status);
 		orderlineEntity.setNumber(this.number);
 		orderlineEntity.setUpdatedAt(this.updatedAt);
+		orderlineEntity.setCreatedAt(this.createdAt);
 		orderlineEntity.setPrice(this.price);
 		orderlineEntity.setCustomer(customerEntity);
 		orderlineEntity.setPromo(promoEntity);
