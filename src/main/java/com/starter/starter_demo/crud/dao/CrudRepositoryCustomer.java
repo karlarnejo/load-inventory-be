@@ -20,18 +20,18 @@ public interface CrudRepositoryCustomer extends JpaRepository<Customer, Long> {
 	
 	//Used LOWER for case insensitive search since ILIKE from Postgresql is not supported in JPA.
 	@Query("SELECT c FROM Customer c WHERE "
-			+ "LOWER(c.firstName) LIKE %:searchQuery% or "
-			+ "LOWER(c.lastName) LIKE %:searchQuery% or "
-			+ "LOWER(c.address) LIKE %:searchQuery% or "
-			+ "LOWER(c.gender) LIKE %:searchQuery% or "
-			+ "LOWER(c.contactNo) LIKE %:searchQuery% or "
-			+ "LOWER(c.middleName) LIKE %:searchQuery%")
+			+ "LOWER(c.firstName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.lastName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.address) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.gender) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.contactNo) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.middleName) LIKE lower(concat('%', :searchQuery,'%'))")
 	public Page<Customer> searchFindAll(Pageable pageable, @Param("searchQuery") String searchQuery);
 	
 	@Query("SELECT c FROM Customer c WHERE "
-			+ "LOWER(c.firstName) LIKE %:searchQuery% or "
-			+ "LOWER(c.lastName) LIKE %:searchQuery% or "
-			+ "LOWER(c.middleName) LIKE %:searchQuery%")
+			+ "LOWER(c.firstName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.lastName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.middleName) LIKE lower(concat('%', :searchQuery,'%'))")
 	public List<Customer> findByCustomerName(@Param("searchQuery") String searchQuery);
 	
 	@Modifying

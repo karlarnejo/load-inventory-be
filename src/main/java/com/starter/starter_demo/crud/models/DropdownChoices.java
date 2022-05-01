@@ -3,6 +3,7 @@ package com.starter.starter_demo.crud.models;
 import com.starter.starter_demo.common.projections.ProjectionOne;
 import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.entity.Promo;
+import com.starter.starter_demo.crud.entity.Provider;
 
 public class DropdownChoices {
 	
@@ -25,6 +26,11 @@ public class DropdownChoices {
 	public DropdownChoices(Promo promoEntity) {
 		this.value = promoEntity.getPromoId();
 		this.label = promoEntity.getPromoName();
+	}
+	
+	public DropdownChoices(Provider promoEntity) {
+		this.value = promoEntity.getProviderId();
+		this.label = promoEntity.getProviderName();
 	}
 	
 	public DropdownChoices(ProjectionOne projectionOne) {

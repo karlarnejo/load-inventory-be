@@ -17,12 +17,12 @@ public interface CrudRepositoryOrderline extends JpaRepository<Orderline, Long> 
 			+ "INNER JOIN o.promo p "
 			+ "INNER JOIN p.provider pp "
 			+ "WHERE "
-			+ "LOWER(c.firstName) LIKE %:searchQuery% or "
-			+ "LOWER(c.lastName) LIKE %:searchQuery% or "
-			+ "LOWER(c.middleName) LIKE %:searchQuery% or "
-			+ "LOWER(o.orderCode) LIKE %:searchQuery% or "
-			+ "LOWER(p.promoName) LIKE %:searchQuery% or "
-			+ "LOWER(pp.providerName) LIKE %:searchQuery%")
+			+ "LOWER(c.firstName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.lastName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(c.middleName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(o.orderCode) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(p.promoName) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(pp.providerName) LIKE lower(concat('%', :searchQuery,'%'))")
 	public Page<Orderline> searchFindAll(Pageable pageable, @Param("searchQuery") String searchQuery);
 	
 	@Modifying

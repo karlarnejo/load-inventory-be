@@ -25,7 +25,6 @@ public class Promo implements Serializable {
 	private String promoId;
 	private String promoName;
 	private boolean inStock;
-	private float price;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -64,14 +63,6 @@ public class Promo implements Serializable {
 
 	public void setInStock(boolean inStock) {
 		this.inStock = inStock;
-	}
-
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
 	}
 
 	public Date getCreatedAt() {

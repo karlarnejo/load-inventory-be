@@ -26,7 +26,7 @@ public class Orderline implements Serializable {
 	private String orderCode;
 	private int status;
 	private String number;
-	private float discount;
+	private float price;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -108,12 +108,12 @@ public class Orderline implements Serializable {
 		this.promo = promo;
 	}
 
-	public float getDiscount() {
-		return discount;
+	public float getPrice() {
+		return price;
 	}
 
-	public void setDiscount(float discount) {
-		this.discount = discount;
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	public static long getSerialversionuid() {

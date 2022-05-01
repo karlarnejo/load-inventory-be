@@ -12,6 +12,6 @@ import com.starter.starter_demo.crud.entity.Promo;
 public interface CrudRepositoryPromo extends JpaRepository<Promo, Long> {
 
 	@Query("SELECT p FROM Promo p WHERE "
-			+ "LOWER(p.promoName) LIKE %:searchQuery%")
+			+ "LOWER(p.promoName) LIKE lower(concat('%', :searchQuery,'%'))")
 	public List<Promo> findByPromoName(@Param("searchQuery") String searchQuery);
 }

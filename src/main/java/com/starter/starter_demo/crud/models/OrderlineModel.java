@@ -15,7 +15,7 @@ public class OrderlineModel {
 	private String customerId;
 	private String promoId;
 	private int status;
-	private float discount;
+	private float price;
 	private String number;
 	private Date updatedAt;
 
@@ -49,12 +49,6 @@ public class OrderlineModel {
 	public void setPromoId(String promoId) {
 		this.promoId = promoId;
 	}
-	public float getDiscount() {
-		return discount;
-	}
-	public void setDiscount(float discount) {
-		this.discount = discount;
-	}
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
@@ -72,8 +66,8 @@ public class OrderlineModel {
 		
 		orderlineEntity.setStatus(this.status);
 		orderlineEntity.setNumber(this.number);
-		orderlineEntity.setDiscount(this.discount);
 		orderlineEntity.setUpdatedAt(this.updatedAt);
+		orderlineEntity.setPrice(this.price);
 		orderlineEntity.setCustomer(customerEntity);
 		orderlineEntity.setPromo(promoEntity);
 		
@@ -90,7 +84,7 @@ public class OrderlineModel {
 		orderlineEntity.setOrderlineId(this.orderlineId);
 		orderlineEntity.setStatus(this.status);
 		orderlineEntity.setNumber(this.number);
-		orderlineEntity.setDiscount(this.discount);
+		orderlineEntity.setPrice(this.price);
 		orderlineEntity.setUpdatedAt(this.updatedAt);
 		orderlineEntity.setCustomer(customerEntity);
 		orderlineEntity.setPromo(promoEntity);
