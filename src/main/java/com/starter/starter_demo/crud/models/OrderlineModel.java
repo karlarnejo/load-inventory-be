@@ -77,7 +77,7 @@ public class OrderlineModel {
 		customerEntity.setCustomerId(getCustomerId());
 		promoEntity.setPromoId(getPromoId());
 		
-		orderlineEntity.setOrderlineId("sample1");
+		orderlineEntity.setOrderlineId(this.orderlineId);
 		orderlineEntity.setStatus(this.status);
 		orderlineEntity.setNumber(this.number);
 		orderlineEntity.setUpdatedAt(this.updatedAt);
