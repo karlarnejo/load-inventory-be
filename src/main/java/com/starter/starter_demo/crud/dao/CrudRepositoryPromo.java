@@ -11,7 +11,10 @@ import com.starter.starter_demo.crud.entity.Promo;
 @Repository
 public interface CrudRepositoryPromo extends JpaRepository<Promo, Long> {
 
-	@Query("SELECT p FROM Promo p WHERE "
-			+ "LOWER(p.promoName) LIKE lower(concat('%', :searchQuery,'%'))")
-	public List<Promo> findByPromoName(@Param("searchQuery") String searchQuery);
+	@Query("SELECT p FROM Promo p "
+			+ "WHERE "
+			+ "LOWER(p.promoName) LIKE lower(concat('%', :searchQuery,'%')) AND "
+			+ "providerId=:providerId")
+	public List<Promo> findByPromoName(@Param("searchQuery") String searchQuery,
+			@Param("providerId") String providerId);
 }

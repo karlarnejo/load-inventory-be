@@ -24,7 +24,7 @@ public class PromoServiceImpl implements PromoService {
 		List<DropdownChoices> dropdownChoices = new ArrayList<DropdownChoices>();
 		
 		if(!searchQuery.getSearchQuery().equals("")) {
-			crudRepositoryPromo.findByPromoName(searchQuery.getSearchQuery()).forEach(data -> {
+			crudRepositoryPromo.findByPromoName(searchQuery.getSearchQuery(), searchQuery.getProviderId()).forEach(data -> {
 				DropdownChoices tempModel = new DropdownChoices(data);
 				
 				dropdownChoices.add(tempModel);

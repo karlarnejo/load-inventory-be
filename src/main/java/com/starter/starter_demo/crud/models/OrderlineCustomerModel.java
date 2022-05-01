@@ -14,6 +14,7 @@ public class OrderlineCustomerModel {
 	private String promoName;
 	private float price;
 	private String providerName;
+	private String providerId;
 	private String customerId;
 	private int status;
 	private String promoId;
@@ -33,6 +34,7 @@ public class OrderlineCustomerModel {
 		this.updatedAt = orderlineEntity.getUpdatedAt();
 		this.promoName = orderlineEntity.getPromo().getPromoName();
 		this.price = orderlineEntity.getPrice();
+		this.providerId = orderlineEntity.getPromo().getProvider().getProviderId();
 		this.providerName = orderlineEntity.getPromo().getProvider().getProviderName();
 		this.customerId = orderlineEntity.getCustomer().getCustomerId();
 		this.status = orderlineEntity.getStatus();
@@ -155,5 +157,13 @@ public class OrderlineCustomerModel {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(String providerId) {
+		this.providerId = providerId;
 	}
 }
