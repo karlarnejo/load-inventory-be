@@ -1,7 +1,7 @@
 package com.starter.starter_demo.crud.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
-
 import com.starter.starter_demo.crud.entity.Orderline;
 
 public class OrderlineCustomerModel {
@@ -12,7 +12,7 @@ public class OrderlineCustomerModel {
 	private Date updatedAt;
 	private String number;
 	private String promoName;
-	private float price;
+	private BigDecimal price;
 	private String providerName;
 	private String providerId;
 	private String customerId;
@@ -87,11 +87,11 @@ public class OrderlineCustomerModel {
 		this.promoName = promoName;
 	}
 
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

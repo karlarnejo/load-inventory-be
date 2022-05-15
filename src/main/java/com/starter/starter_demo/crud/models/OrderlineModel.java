@@ -1,5 +1,6 @@
 package com.starter.starter_demo.crud.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Temporal;
@@ -15,7 +16,7 @@ public class OrderlineModel {
 	private String customerId;
 	private String promoId;
 	private int status;
-	private float price;
+	private BigDecimal price;
 	private String number;
 	private Date updatedAt;
 	private Date createdAt;
@@ -56,10 +57,10 @@ public class OrderlineModel {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	public Date getCreatedAt() {
