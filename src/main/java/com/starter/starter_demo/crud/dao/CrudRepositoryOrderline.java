@@ -20,7 +20,7 @@ public interface CrudRepositoryOrderline extends JpaRepository<Orderline, Long> 
 			+ "LOWER(c.firstName) LIKE lower(concat('%', :searchQuery,'%')) or "
 			+ "LOWER(c.lastName) LIKE lower(concat('%', :searchQuery,'%')) or "
 			+ "LOWER(c.middleName) LIKE lower(concat('%', :searchQuery,'%')) or "
-			+ "LOWER(c.contactNo) LIKE lower(concat('%', :searchQuery,'%')) or "
+			+ "LOWER(o.number) LIKE lower(concat('%', :searchQuery,'%')) or "
 			+ "LOWER(o.orderCode) LIKE lower(concat('%', :searchQuery,'%')) or "
 //			+ "o.price LIKE %:searchQuery% or "
 //			+ "o.status LIKE %:searchQuery% or "
