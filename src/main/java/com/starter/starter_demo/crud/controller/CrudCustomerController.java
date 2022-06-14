@@ -1,6 +1,7 @@
 package com.starter.starter_demo.crud.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,18 +35,40 @@ public class CrudCustomerController {
 	@Autowired
 	private CrudRepositoryCustomer crudRepositoryCustomer;
 	
-//	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//	public List<CustomerFLNameModel> getData(@PathVariable int id) {		
-//		return customerService.findAll();
-//	}
+	/*
+	 * Sample Path Variable
+	 * 
+	 * 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+		public List<CustomerFLNameModel> getData(@PathVariable int id) {		
+			return customerService.findAll();
+		}
+	 * */
 	
-//	@RequestMapping(value = "/flname", method = RequestMethod.GET)
-//	public ApiResult findAllFLName() {			
-//		return ApiResult.createResponse(customerService.findAllFLName(), "Token to be added later", "Message to be added later");		
-//	}
+	/*
+	 * Search using POST
+	 * 
+		@RequestMapping(value = "/search", method = RequestMethod.POST)
+		public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
+			return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+		}
+	*/
 	
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ApiResult findByCustomerId(
+			@RequestParam(value = "searchQuery", required = false, defaultValue = "") String searchQuery,
+			@RequestParam(value = "sortDirection", required = false, defaultValue = "dsc") String sortDirection,
+			@RequestParam(value = "sortItem", required = false, defaultValue = "firstName") String sortItem,
+			@RequestParam(value = "itemsPerPage", required = false, defaultValue = "5") int itemsPerPage,
+			@RequestParam(value = "pageInput", required = false, defaultValue = "1") int pageInput) {	
+		
+		SearchParams searchParams = new SearchParams();
+		
+		searchParams.setSearchQuery(searchQuery);
+		searchParams.setSortDirection(sortDirection);
+		searchParams.setSortItem(sortItem);
+		searchParams.setItemsPerPage(itemsPerPage);
+		searchParams.setPageInput(pageInput);
+		
 		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
 	}
 	

@@ -33,24 +33,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
 	
-//	@Autowired
-//	private Di di;
-	
-//	@Override
-//	public List<CustomerFLNameModel> findAllFLName() {
-//		// TODO Auto-generated method stub
-//		
-//		List<CustomerFLNameModel> customerModel = new ArrayList<CustomerFLNameModel>();
-//		
-//		crudRepository.findAll().forEach(data -> {
-//			CustomerFLNameModel tempModel = new CustomerFLNameModel(data);
-//			
-//			customerModel.add(tempModel);
-//		});
-//		
-//		return customerModel;
-//	}
-	
 	@Override
 	public PaginationModel searchFindAll(SearchParams searchParams) {
 		// TODO Auto-generated method stub
