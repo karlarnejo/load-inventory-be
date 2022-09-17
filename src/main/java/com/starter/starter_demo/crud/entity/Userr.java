@@ -2,10 +2,12 @@ package com.starter.starter_demo.crud.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,11 +22,14 @@ public class Userr implements Serializable {
 	@Id
 	private String username;
 	private String password;
-	private int role;
+	private boolean isEnabled;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy = "userr")
+	private List<UserToRole> UserToRole;
 	
 	public Userr() {
 		
@@ -32,6 +37,14 @@ public class Userr implements Serializable {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public List<UserToRole> getUserToRole() {
+		return UserToRole;
+	}
+
+	public void setUserToRole(List<UserToRole> userToRole) {
+		UserToRole = userToRole;
 	}
 
 	public void setUsername(String username) {
@@ -46,12 +59,12 @@ public class Userr implements Serializable {
 		this.password = password;
 	}
 
-	public int getRole() {
-		return role;
+	public boolean isEnabled() {
+		return isEnabled;
 	}
 
-	public void setRole(int role) {
-		this.role = role;
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
 	}
 
 	public static long getSerialversionuid() {

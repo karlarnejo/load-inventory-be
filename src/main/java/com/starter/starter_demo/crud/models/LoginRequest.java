@@ -10,70 +10,89 @@ import com.starter.starter_demo.crud.entity.Userr;
 
 @Service
 public class LoginRequest implements UserDetails {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String username;
 	private String password;
-	
+	private boolean active;
+	private Collection<? extends GrantedAuthority> authorities;
+
 	public LoginRequest() {
-		
+
 	}
 	
 	public LoginRequest(Userr userEntity) {
 		this.setUsername(userEntity.getUsername());
 		this.setPassword(userEntity.getPassword());
 	}
-	
-	public LoginRequest(String username, String password) {
+
+	public LoginRequest(String username, String password, boolean active,
+			Collection<? extends GrantedAuthority> authorities) {
 		this.username = username;
 		this.password = password;
-	}
-	
-	public LoginRequest buildUser(String username, String password) {
-		return new LoginRequest(username, password);
+		this.active = active;
+		this.authorities = authorities;
 	}
 
-	public String getUsername() {
-		return username;
+	public LoginRequest buildUser(String username, String password, boolean active,
+			Collection<? extends GrantedAuthority> authorities) {
+		return new LoginRequest(username, password, active, authorities);
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return authorities;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return active;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return active;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return active;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return active;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setPassword(String password) {
