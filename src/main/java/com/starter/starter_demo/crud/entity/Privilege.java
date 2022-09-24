@@ -11,28 +11,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="userprivileges")
-@NamedQuery(name="UserPrivileges.findAll", query="SELECT u FROM UserPrivileges u")
-public class UserPrivileges {
+@Table(name="privilege")
+@NamedQuery(name="Privilege.findAll", query="SELECT u FROM Privilege u")
+public class Privilege {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userPrivilegesId;
+	private int privilegeId;
 	private String privilegeName;
 	
-	@OneToMany(mappedBy = "userPrivileges")
-	private List<UserRoleToRolePrivileges> userRoleToRolePrivileges;
+	@OneToMany(mappedBy = "privilege")
+	private List<RoleToPrivilege> roleToPrivileges;
 	
-	public UserPrivileges() {
+	public Privilege() {
 		
 	}
 
-	public int getUserPrivilegesId() {
-		return userPrivilegesId;
+	public int getPrivilegeId() {
+		return privilegeId;
 	}
 
-	public void setUserPrivilegesId(int userPrivilegesId) {
-		this.userPrivilegesId = userPrivilegesId;
+	public void setPrivilegeId(int privilegeId) {
+		this.privilegeId = privilegeId;
 	}
 
 	public String getPrivilegeName() {
@@ -41,5 +41,13 @@ public class UserPrivileges {
 
 	public void setPrivilegeName(String privilegeName) {
 		this.privilegeName = privilegeName;
+	}
+
+	public List<RoleToPrivilege> getRoleToPrivileges() {
+		return roleToPrivileges;
+	}
+
+	public void setRoleToPrivileges(List<RoleToPrivilege> roleToPrivileges) {
+		this.roleToPrivileges = roleToPrivileges;
 	}
 }

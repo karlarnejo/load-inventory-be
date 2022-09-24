@@ -23,8 +23,8 @@ public class UserToRole {
     private Userr userr;
     
     @ManyToOne
-	@JoinColumn(name = "userRoleId", referencedColumnName = "userRoleId")
-    private UserRole userRole;
+	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
+    private Role role;
     
 	public UserToRole() {
 		
@@ -46,11 +46,11 @@ public class UserToRole {
 		this.userr = userr;
 	}
 
-	public UserRole getUserRole() {
-		return userRole;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

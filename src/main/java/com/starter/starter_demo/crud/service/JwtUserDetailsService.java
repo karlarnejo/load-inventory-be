@@ -20,11 +20,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.starter.starter_demo.crud.dao.CrudRepositoryUser;
-import com.starter.starter_demo.crud.entity.UserRoleToRolePrivileges;
+import com.starter.starter_demo.crud.entity.RoleToPrivilege;
 import com.starter.starter_demo.crud.entity.UserToRole;
 import com.starter.starter_demo.crud.entity.Userr;
 import com.starter.starter_demo.crud.models.LoginRequest;
 import com.starter.starter_demo.crud.models.UserToRoleModel;
+import com.starter.starter_demo.crud.models.UserrJwtModel;
 
 @Transactional
 @Service
@@ -41,8 +42,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 		
 		//TODO: Use models only here.
 		
-		Userr response = crudRepositoryUser.findByUsername(username);
-		
+		UserrJwtModel response = new UserrJwtModel(crudRepositoryUser.findByUsername(username));
+
 		if (!response.getUsername().equals("")) {
 			/* 
 			 * User(...) auto decrypts the password supplied in UsernamePasswordAuthenticationToken(), 
@@ -52,9 +53,9 @@ public class JwtUserDetailsService implements UserDetailsService {
 			Set<GrantedAuthority> authorities = new HashSet<>();
 			
 			for (UserToRole userToRole : response.getUserToRole()) {
-	            authorities.add(new SimpleGrantedAuthority("ROLE_" + userToRole.getUserRole().getRoleName()));
-	            for (UserRoleToRolePrivileges userRoleToRolePrivileges : userToRole.getUserRole().getUserRoleToRolePrivileges()) {
-	                authorities.add(new SimpleGrantedAuthority(userRoleToRolePrivileges.getUserPrivileges().getPrivilegeName()));
+	            authorities.add(new SimpleGrantedAuthority("ROLE_" + userToRole.getRole().getRoleName()));
+	            for (RoleToPrivilege userRoleToRolePrivileges : userToRole.getRole().getRoleToPrivileges()) {
+	                authorities.add(new SimpleGrantedAuthority(userRoleToRolePrivileges.getPrivilege().getPrivilegeName()));
 	            }
 	        }
 			
