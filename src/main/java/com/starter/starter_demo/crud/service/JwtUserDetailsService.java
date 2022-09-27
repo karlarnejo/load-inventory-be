@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +40,19 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
+	private static final Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		//TODO: Use models only here.
+				
+		//TODO: Add user disabled and bad credentials check.
 		
 		UserrJwtModel response = new UserrJwtModel(crudRepositoryUser.findByUsername(username));
 
 		if (!response.getUsername().equals("")) {
+			
+			logger.debug("There is a username found {}.", response.getUsername());
+			
 			/* 
 			 * User(...) auto decrypts the password supplied in UsernamePasswordAuthenticationToken(), 
 			 * check if they are a match. PW in DB should be in BCrypt
@@ -53,8 +61,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 			Set<GrantedAuthority> authorities = new HashSet<>();
 			
 			for (UserToRole userToRole : response.getUserToRole()) {
+				logger.debug("Roles found for {} are: {}.", response.getUsername(), userToRole.getRole().getRoleName());
 	            authorities.add(new SimpleGrantedAuthority("ROLE_" + userToRole.getRole().getRoleName()));
 	            for (RoleToPrivilege userRoleToRolePrivileges : userToRole.getRole().getRoleToPrivileges()) {
+					logger.debug("Privileges found for {} are: {}.", response.getUsername(), userRoleToRolePrivileges.getPrivilege().getPrivilegeName());
 	                authorities.add(new SimpleGrantedAuthority(userRoleToRolePrivileges.getPrivilege().getPrivilegeName()));
 	            }
 	        }
