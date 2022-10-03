@@ -24,6 +24,8 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
+	//TODO: Create new model for username and password only instead of LoginRequest.
+	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ApiResult createAuthenticationToken(@RequestBody LoginRequest authenticationRequest) throws Exception {
 

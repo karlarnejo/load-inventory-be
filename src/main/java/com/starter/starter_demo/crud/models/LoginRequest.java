@@ -15,7 +15,10 @@ public class LoginRequest implements UserDetails {
 
 	private String username;
 	private String password;
-	private boolean active;
+	private boolean isEnabled;
+	private boolean isNotLocked;
+	private boolean isAccountNotExpired;
+	private boolean isPasswordNotExpired;
 	private Collection<? extends GrantedAuthority> authorities;
 
 	public LoginRequest() {
@@ -27,25 +30,35 @@ public class LoginRequest implements UserDetails {
 		this.setPassword(userEntity.getPassword());
 	}
 
-	public LoginRequest(String username, String password, boolean active,
-			Collection<? extends GrantedAuthority> authorities) {
+	public LoginRequest(String username, String password, boolean isEnabled, boolean isNotLocked,
+			boolean isAccountNotExpired, boolean isPasswordNotExpired, Collection<? extends GrantedAuthority> authorities) {
 		this.username = username;
 		this.password = password;
-		this.active = active;
+		this.isEnabled = isEnabled;
+		this.isNotLocked = isNotLocked;
+		this.isAccountNotExpired = isAccountNotExpired;
+		this.isPasswordNotExpired = isPasswordNotExpired;
 		this.authorities = authorities;
 	}
 
-	public LoginRequest buildUser(String username, String password, boolean active,
-			Collection<? extends GrantedAuthority> authorities) {
-		return new LoginRequest(username, password, active, authorities);
+	public String getUsername() {
+		return username;
 	}
 
-	public boolean isActive() {
-		return active;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
 	}
 
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
@@ -56,46 +69,31 @@ public class LoginRequest implements UserDetails {
 		return serialVersionUID;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
-
-	@Override
-	public String getUsername() {
-		return username;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return active;
+		// TODO Auto-generated method stub
+		return isAccountNotExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return active;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return active;
+		// TODO Auto-generated method stub
+		return isNotLocked;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return active;
+		// TODO Auto-generated method stub
+		return isEnabled;
 	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return isPasswordNotExpired;
 	}
 }

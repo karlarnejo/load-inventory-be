@@ -3,44 +3,48 @@ package com.starter.starter_demo.common;
 public class ApiResult {
 	
 	private Object data;
-	private String token;
 	private String message;
-	//private Status status;
+	private String status;
 	
 	public ApiResult() {
 		
 	}
 	
-	public ApiResult(Object data, String token, String message) {
+	public ApiResult(Object data, String status, String message) {
 		this.data = data;
-		this.token = token;
+		this.status = status;
 		this.message = message;
 	}
 	
-	public static ApiResult createResponse(Object data, String token, String message) {
-		return new ApiResult(data, token, message);
+	public static ApiResult createResponse(Object data, String status, String message) {
+		return new ApiResult(data, status, message);
 	}
 	
-	public static ApiResult createResponse(Void data, String token, String message) {
-		return new ApiResult(data, token, message);
+	public static ApiResult createResponse(Void data, String status, String message) {
+		return new ApiResult(data, status, message);
 	}
-	
-	public Object getdata() {
-		return data;
-	}
-	public void setdata(Object data) {
-		this.data = data;
-	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

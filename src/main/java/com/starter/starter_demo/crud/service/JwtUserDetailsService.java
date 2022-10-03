@@ -11,9 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +33,12 @@ import com.starter.starter_demo.crud.entity.Userr;
 import com.starter.starter_demo.crud.models.LoginRequest;
 import com.starter.starter_demo.crud.models.UserToRoleModel;
 import com.starter.starter_demo.crud.models.UserrJwtModel;
+import com.starter.starter_demo.exception.UserAccountDisabledException;
+import com.starter.starter_demo.exception.UserAccountExpiredException;
+import com.starter.starter_demo.exception.UserAccountLockedException;
+import com.starter.starter_demo.exception.UserInvalidPasswordException;
+import com.starter.starter_demo.exception.UserInvalidUsernameException;
+import com.starter.starter_demo.exception.UserPasswordExpiredException;
 
 @Transactional
 @Service
@@ -44,13 +54,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				
-		//TODO: Add user disabled and bad credentials check.
-		
+						
 		UserrJwtModel response = new UserrJwtModel(crudRepositoryUser.findByUsername(username));
 
 		if (!response.getUsername().equals("")) {
-			
+
 			logger.debug("There is a username found {}.", response.getUsername());
 			
 			/* 
@@ -69,7 +77,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	            }
 	        }
 			
-	       return new LoginRequest(response.getUsername(), response.getPassword(), response.isEnabled(), authorities);
+	       return new LoginRequest(response.getUsername(), response.getPassword(), response.isEnabled(), response.isNotLocked(), response.isAccountNotExpired(), response.isPasswordNotExpired(), authorities);
 		} 
 		else {
 			throw new UsernameNotFoundException("User not found with username: " + username);
@@ -79,10 +87,18 @@ public class JwtUserDetailsService implements UserDetailsService {
 	public void authenticate(String username, String password) throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		} catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
-		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
+		}catch (DisabledException e) {
+			throw new UserAccountDisabledException();
+		}catch (LockedException e) {
+			throw new UserAccountLockedException();
+		}catch (AccountExpiredException e) {
+			throw new UserAccountExpiredException();
+		}catch (CredentialsExpiredException e) {
+			throw new UserPasswordExpiredException();
+		}catch (InternalAuthenticationServiceException e) {
+			throw new UserInvalidUsernameException();
+		}catch (BadCredentialsException e) {
+			throw new UserInvalidPasswordException();
 		}
 	}
 }

@@ -23,6 +23,9 @@ public class Userr implements Serializable {
 	private String username;
 	private String password;
 	private boolean isEnabled;
+	private boolean isNotLocked;
+	private boolean isAccountNotExpired;
+	private boolean isPasswordNotExpired;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -85,5 +88,29 @@ public class Userr implements Serializable {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public boolean isNotLocked() {
+		return isNotLocked;
+	}
+
+	public void setNotLocked(boolean isNotLocked) {
+		this.isNotLocked = isNotLocked;
+	}
+
+	public boolean isAccountNotExpired() {
+		return isAccountNotExpired;
+	}
+
+	public void setAccountNotExpired(boolean isAccountNotExpired) {
+		this.isAccountNotExpired = isAccountNotExpired;
+	}
+
+	public boolean isPasswordNotExpired() {
+		return isPasswordNotExpired;
+	}
+
+	public void setPasswordNotExpired(boolean isPasswordNotExpired) {
+		this.isPasswordNotExpired = isPasswordNotExpired;
 	}
 }
