@@ -27,26 +27,26 @@ public class CrudOrderlineController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
-		return ApiResult.createResponse(orderlineService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(orderlineService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public ApiResult DeleteByCustomerId(@RequestBody DeleteOrderModel orderlineId) {		
-		return ApiResult.createResponse(orderlineService.deleteByOrderlineId(orderlineId), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(orderlineService.deleteByOrderlineId(orderlineId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ApiResult saveCustomer(@RequestBody OrderlineModel orderlineModel) {
-		return ApiResult.createResponse(orderlineService.saveOrderline(orderlineModel), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(orderlineService.saveOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ApiResult editCustomer(@RequestBody OrderlineModel orderlineModel) {
-		return ApiResult.createResponse(orderlineService.updateOrderline(orderlineModel), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(orderlineService.updateOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 //	@RequestMapping(value = "/findAllInnerJoinWhere", method = RequestMethod.GET)
 //	public ApiResult findAllInnerJoinWhere(@RequestParam Long customerId) {			
-//		return ApiResult.createResponse(orderlineService.findAllInnerJoinWhere(customerId), "Token to be added later", "Message to be added later");		
+//		return ApiResult.createResponse(orderlineService.findAllInnerJoinWhere(customerId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");		
 //	}
 }

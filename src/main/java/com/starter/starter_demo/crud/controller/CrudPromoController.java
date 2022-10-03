@@ -21,6 +21,6 @@ public class CrudPromoController {
 	
 	@RequestMapping(value = "/names", method = RequestMethod.POST)
 	public ApiResult findByPromoName(@RequestBody SearchQuery searchQuery) {		
-		return ApiResult.createResponse(promoService.findByPromoName(searchQuery), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(promoService.findByPromoName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 }

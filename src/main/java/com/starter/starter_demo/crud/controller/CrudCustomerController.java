@@ -49,7 +49,7 @@ public class CrudCustomerController {
 	 * 
 		@RequestMapping(value = "/search", method = RequestMethod.POST)
 		public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
-			return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+			return ApiResult.createResponse(customerService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 		}
 	*/
 	
@@ -69,33 +69,33 @@ public class CrudCustomerController {
 		searchParams.setItemsPerPage(itemsPerPage);
 		searchParams.setPageInput(pageInput);
 		
-		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/names", method = RequestMethod.POST)
 	public ApiResult findByCustomerName(@RequestBody SearchQuery searchQuery) {		
-		return ApiResult.createResponse(customerService.findByCustomerName(searchQuery), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.findByCustomerName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public ApiResult DeleteByCustomerId(@RequestBody DeleteCustomerModel customerId) {		
-		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ApiResult saveCustomer(@RequestBody CustomerModel customerModel) {
-		return ApiResult.createResponse(customerService.saveCustomer(customerModel), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.saveCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ApiResult editCustomer(@RequestBody CustomerModel customerModel) {
-		return ApiResult.createResponse(customerService.updateCustomer(customerModel), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(customerService.updateCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 //	
 //	@RequestMapping(value = "/findByCustomerId", method = RequestMethod.GET)
 //	public ApiResult findByCustomerId(@RequestParam Long customerId) {			
-//		return ApiResult.createResponse(customerService.findByCustomerId(customerId), "Token to be added later", "Message to be added later");		
+//		return ApiResult.createResponse(customerService.findByCustomerId(customerId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");		
 //	}
 	
 	@RequestMapping(value = "/findProjectionOne", method = RequestMethod.GET)

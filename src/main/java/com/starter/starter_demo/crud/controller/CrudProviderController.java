@@ -21,6 +21,6 @@ public class CrudProviderController {
 	
 	@RequestMapping(value = "/names", method = RequestMethod.POST)
 	public ApiResult findByProviderName(@RequestBody SearchQuery searchQuery) {		
-		return ApiResult.createResponse(providerService.findByProviderName(searchQuery), "Token to be added later", "Message to be added later");
+		return ApiResult.createResponse(providerService.findByProviderName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 }
