@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starter.starter_demo.common.ApiResult;
+import com.starter.starter_demo.common.ApiResultRest;
 import com.starter.starter_demo.crud.dao.CrudRepositoryCustomer;
 import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
 import com.starter.starter_demo.crud.entity.Customer;
@@ -54,7 +54,7 @@ public class CrudCustomerController {
 	*/
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ApiResult findByCustomerId(
+	public ApiResultRest findByCustomerId(
 			@RequestParam(value = "searchQuery", required = false, defaultValue = "") String searchQuery,
 			@RequestParam(value = "sortDirection", required = false, defaultValue = "dsc") String sortDirection,
 			@RequestParam(value = "sortItem", required = false, defaultValue = "firstName") String sortItem,
@@ -69,27 +69,27 @@ public class CrudCustomerController {
 		searchParams.setItemsPerPage(itemsPerPage);
 		searchParams.setPageInput(pageInput);
 		
-		return ApiResult.createResponse(customerService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+		return ApiResultRest.createResponse(customerService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/names", method = RequestMethod.POST)
-	public ApiResult findByCustomerName(@RequestBody SearchQuery searchQuery) {		
-		return ApiResult.createResponse(customerService.findByCustomerName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest findByCustomerName(@RequestBody SearchQuery searchQuery) {		
+		return ApiResultRest.createResponse(customerService.findByCustomerName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public ApiResult DeleteByCustomerId(@RequestBody DeleteCustomerModel customerId) {		
-		return ApiResult.createResponse(customerService.deleteByCustomerId(customerId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest DeleteByCustomerId(@RequestBody DeleteCustomerModel customerId) {		
+		return ApiResultRest.createResponse(customerService.deleteByCustomerId(customerId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ApiResult saveCustomer(@RequestBody CustomerModel customerModel) {
-		return ApiResult.createResponse(customerService.saveCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest saveCustomer(@RequestBody CustomerModel customerModel) {
+		return ApiResultRest.createResponse(customerService.saveCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ApiResult editCustomer(@RequestBody CustomerModel customerModel) {
-		return ApiResult.createResponse(customerService.updateCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest editCustomer(@RequestBody CustomerModel customerModel) {
+		return ApiResultRest.createResponse(customerService.updateCustomer(customerModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 //	

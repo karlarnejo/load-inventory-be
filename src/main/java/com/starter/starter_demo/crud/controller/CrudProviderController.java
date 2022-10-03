@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starter.starter_demo.common.ApiResult;
+import com.starter.starter_demo.common.ApiResultRest;
 import com.starter.starter_demo.crud.models.SearchQuery;
 import com.starter.starter_demo.crud.service.ProviderService;
 
@@ -20,7 +20,7 @@ public class CrudProviderController {
 	private ProviderService providerService;
 	
 	@RequestMapping(value = "/names", method = RequestMethod.POST)
-	public ApiResult findByProviderName(@RequestBody SearchQuery searchQuery) {		
-		return ApiResult.createResponse(providerService.findByProviderName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest findByProviderName(@RequestBody SearchQuery searchQuery) {		
+		return ApiResultRest.createResponse(providerService.findByProviderName(searchQuery), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 }

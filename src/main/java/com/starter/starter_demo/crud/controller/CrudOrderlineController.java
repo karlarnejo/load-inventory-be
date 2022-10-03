@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starter.starter_demo.common.ApiResult;
+import com.starter.starter_demo.common.ApiResultRest;
 import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
 import com.starter.starter_demo.crud.models.CustomerModel;
 import com.starter.starter_demo.crud.models.DeleteCustomerModel;
@@ -26,23 +26,23 @@ public class CrudOrderlineController {
 	private OrderlineService orderlineService;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ApiResult searchfindAll(@RequestBody SearchParams searchParams) {		
-		return ApiResult.createResponse(orderlineService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest searchfindAll(@RequestBody SearchParams searchParams) {		
+		return ApiResultRest.createResponse(orderlineService.searchFindAll(searchParams), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public ApiResult DeleteByCustomerId(@RequestBody DeleteOrderModel orderlineId) {		
-		return ApiResult.createResponse(orderlineService.deleteByOrderlineId(orderlineId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest DeleteByCustomerId(@RequestBody DeleteOrderModel orderlineId) {		
+		return ApiResultRest.createResponse(orderlineService.deleteByOrderlineId(orderlineId), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ApiResult saveCustomer(@RequestBody OrderlineModel orderlineModel) {
-		return ApiResult.createResponse(orderlineService.saveOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest saveCustomer(@RequestBody OrderlineModel orderlineModel) {
+		return ApiResultRest.createResponse(orderlineService.saveOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ApiResult editCustomer(@RequestBody OrderlineModel orderlineModel) {
-		return ApiResult.createResponse(orderlineService.updateOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest editCustomer(@RequestBody OrderlineModel orderlineModel) {
+		return ApiResultRest.createResponse(orderlineService.updateOrderline(orderlineModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 	
 //	@RequestMapping(value = "/findAllInnerJoinWhere", method = RequestMethod.GET)

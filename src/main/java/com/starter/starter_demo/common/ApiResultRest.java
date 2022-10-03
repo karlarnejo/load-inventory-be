@@ -1,27 +1,27 @@
 package com.starter.starter_demo.common;
 
-public class ApiResult {
-	
+public class ApiResultRest {
+
 	private Object data;
 	private String message;
 	private String status;
 	
-	public ApiResult() {
+	public ApiResultRest() {
 		
 	}
 	
-	public ApiResult(Object data, String status, String message) {
+	public ApiResultRest(Object data, String status, String message) {
 		this.data = data;
 		this.status = status;
 		this.message = message;
 	}
 	
-	public static ApiResult createResponse(Object data, String status, String message) {
-		return new ApiResult(data, status, message);
+	public static ApiResultRest createResponse(Object data, String status, String message) {
+		return new ApiResultRest(data, status, message);
 	}
 	
-	public static ApiResult createResponse(Void data, String status, String message) {
-		return new ApiResult(data, status, message);
+	public static ApiResultRest createResponse(Void data, String status, String message) {
+		return new ApiResultRest(data, status, message);
 	}
 
 	public String getMessage() {

@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starter.starter_demo.common.ApiResult;
+import com.starter.starter_demo.common.ApiResultAuth;
+import com.starter.starter_demo.common.ApiResultRest;
 import com.starter.starter_demo.common.UserDetailsModel;
 import com.starter.starter_demo.config.JwtTokenUtil;
+import com.starter.starter_demo.crud.models.AuthenticationModel;
 import com.starter.starter_demo.crud.models.LoginRequest;
 import com.starter.starter_demo.crud.service.JwtUserDetailsService;
 
@@ -23,11 +25,9 @@ public class JwtAuthenticationController {
 
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
-
-	//TODO: Create new model for username and password only instead of LoginRequest.
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ApiResult createAuthenticationToken(@RequestBody LoginRequest authenticationRequest) throws Exception {
+	public ApiResultAuth createAuthenticationToken(@RequestBody AuthenticationModel authenticationRequest) throws Exception {
 
 		userDetailsService.authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -39,6 +39,6 @@ public class JwtAuthenticationController {
 		UserDetailsModel userDetailsModel = new UserDetailsModel();
 		userDetailsModel.setUsername(userDetails.getUsername());
 		
-		return ApiResult.createResponse(userDetailsModel, token, "Message to be added later");
+		return ApiResultAuth.createResponse(userDetailsModel, "CUSTOM_SUCCESS_STATUS", "Message to be added later", token);
 	}
 }
