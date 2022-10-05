@@ -6,20 +6,19 @@ public class ApiResultError {
 	
 	private String message;
 	private String status;
-	private UUID transactionId;
+	final private UUID transactionId = UUID.randomUUID();
 	
 	public ApiResultError() {
 		
 	}
 	
-	public ApiResultError(String message, String status, UUID transactionId) {
+	public ApiResultError(String message, String status) {
 		this.message = message;
 		this.status = status;
-		this.transactionId = transactionId;
 	}
 	
-	public static ApiResultError createResponse(String message, String status, UUID transactionId) {
-		return new ApiResultError(message, status, transactionId);
+	public static ApiResultError createResponse(String message, String status) {
+		return new ApiResultError(message, status);
 	}
 
 	public String getMessage() {
@@ -40,9 +39,5 @@ public class ApiResultError {
 
 	public UUID getTransactionId() {
 		return transactionId;
-	}
-
-	public void setTransactionId(UUID transactionId) {
-		this.transactionId = transactionId;
 	}
 }
