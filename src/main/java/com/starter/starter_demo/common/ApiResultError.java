@@ -1,24 +1,23 @@
 package com.starter.starter_demo.common;
 
-import java.util.UUID;
-
 public class ApiResultError {
 	
 	private String message;
 	private String status;
-	final private UUID transactionId = UUID.randomUUID();
+	private String transactionId;
 	
 	public ApiResultError() {
 		
 	}
 	
-	public ApiResultError(String message, String status) {
+	public ApiResultError(String message, String status, String transactionId) {
 		this.message = message;
 		this.status = status;
+		this.transactionId = transactionId;
 	}
 	
-	public static ApiResultError createResponse(String message, String status) {
-		return new ApiResultError(message, status);
+	public static ApiResultError createResponse(String message, String status, String transactionId) {
+		return new ApiResultError(message, status, transactionId);
 	}
 
 	public String getMessage() {
@@ -37,7 +36,7 @@ public class ApiResultError {
 		this.status = status;
 	}
 
-	public UUID getTransactionId() {
+	public String getTransactionId() {
 		return transactionId;
 	}
 }

@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.starter.starter_demo.common.ApiResultAuth;
-import com.starter.starter_demo.common.ApiResultRest;
 import com.starter.starter_demo.common.UserDetailsModel;
 import com.starter.starter_demo.config.JwtTokenUtil;
 import com.starter.starter_demo.crud.models.AuthenticationModel;
-import com.starter.starter_demo.crud.models.LoginRequest;
 import com.starter.starter_demo.crud.service.JwtUserDetailsService;
 
 @RestController

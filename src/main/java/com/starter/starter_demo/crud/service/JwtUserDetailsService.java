@@ -1,8 +1,6 @@
 package com.starter.starter_demo.crud.service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -19,7 +17,6 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,9 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.starter.starter_demo.crud.dao.CrudRepositoryUser;
 import com.starter.starter_demo.crud.entity.RoleToPrivilege;
 import com.starter.starter_demo.crud.entity.UserToRole;
-import com.starter.starter_demo.crud.entity.Userr;
 import com.starter.starter_demo.crud.models.LoginRequest;
-import com.starter.starter_demo.crud.models.UserToRoleModel;
 import com.starter.starter_demo.crud.models.UserrJwtModel;
 import com.starter.starter_demo.exception.UserAccountDisabledException;
 import com.starter.starter_demo.exception.UserAccountExpiredException;
@@ -80,25 +75,26 @@ public class JwtUserDetailsService implements UserDetailsService {
 	       return new LoginRequest(response.getUsername(), response.getPassword(), response.isEnabled(), response.isNotLocked(), response.isAccountNotExpired(), response.isPasswordNotExpired(), authorities);
 		} 
 		else {
-			throw new UsernameNotFoundException("User not found with username: " + username);
+			throw new UserInvalidUsernameException();
 		}
 	}
 	
 	public void authenticate(String username, String password) throws Exception {
+				
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		}catch (DisabledException e) {
-			throw new UserAccountDisabledException();
+			throw new UserAccountDisabledException(e, username);
 		}catch (LockedException e) {
-			throw new UserAccountLockedException();
+			throw new UserAccountLockedException(e, username);
 		}catch (AccountExpiredException e) {
-			throw new UserAccountExpiredException();
+			throw new UserAccountExpiredException(e, username);
 		}catch (CredentialsExpiredException e) {
-			throw new UserPasswordExpiredException();
+			throw new UserPasswordExpiredException(e, username);
 		}catch (InternalAuthenticationServiceException e) {
-			throw new UserInvalidUsernameException();
+			throw new UserInvalidUsernameException(e, username);
 		}catch (BadCredentialsException e) {
-			throw new UserInvalidPasswordException();
+			throw new UserInvalidPasswordException(e, username);
 		}
 	}
 }
