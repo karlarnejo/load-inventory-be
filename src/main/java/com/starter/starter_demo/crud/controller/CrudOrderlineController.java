@@ -5,13 +5,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.starter.starter_demo.common.ApiResultRest;
-import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
-import com.starter.starter_demo.crud.models.CustomerModel;
-import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.DeleteOrderModel;
 import com.starter.starter_demo.crud.models.OrderlineModel;
 import com.starter.starter_demo.crud.models.SearchParams;

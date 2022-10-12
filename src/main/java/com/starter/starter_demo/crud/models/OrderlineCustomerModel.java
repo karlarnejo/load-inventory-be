@@ -2,6 +2,7 @@ package com.starter.starter_demo.crud.models;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 import com.starter.starter_demo.crud.entity.Orderline;
 
 public class OrderlineCustomerModel {

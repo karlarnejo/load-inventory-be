@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.starter.starter_demo.crud.entity.RoleToPrivilege;
 import com.starter.starter_demo.crud.entity.UserToRole;
-import com.starter.starter_demo.crud.entity.Userr;
 
 public class UserToRoleModel {
 

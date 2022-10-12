@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.starter.starter_demo.crud.dao.CrudRepositoryOrderline;
-import com.starter.starter_demo.crud.entity.Customer;
 import com.starter.starter_demo.crud.entity.Orderline;
-import com.starter.starter_demo.crud.models.CustomerModel;
-import com.starter.starter_demo.crud.models.DeleteCustomerModel;
 import com.starter.starter_demo.crud.models.DeleteOrderModel;
 import com.starter.starter_demo.crud.models.OrderlineCustomerModel;
 import com.starter.starter_demo.crud.models.OrderlineModel;
