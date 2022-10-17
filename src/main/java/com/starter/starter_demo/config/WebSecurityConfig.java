@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.starter.starter_demo.exception.PrivilegeException;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -69,6 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// make sure we use stateless session; session won't be used to
 			// store user's state.
 			.exceptionHandling()
+				.accessDeniedHandler(new PrivilegeException())
 				.authenticationEntryPoint(jwtAuthenticationEntryPoint)
 				.and()
 				.sessionManagement()

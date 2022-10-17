@@ -6,6 +6,9 @@ public final class ERR_CONSTANTS {
 		
 	}
 	
+	public static final String NO_STACKTRACE = "No stacktrace.";
+	public static final String NOT_ENOUGH_AUTHORITY = "User does not have enough authority for this request.";
+	public static final String UNHANDLED_EXCEPTION = "An unexpected error has occured.";
 	public static final String ACCOUNT_DISABLED = "User account is disabled.";
 	public static final String ACCOUNT_LOCKED = "User account is locked.";
 	public static final String ACCOUNT_EXPIRED= "User account has expired.";
