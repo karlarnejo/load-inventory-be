@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.starter.starter_demo.common.ApiResultError;
 import com.starter.starter_demo.constants.ERR_CONSTANTS;
-import com.starter.starter_demo.crud.service.JwtUserDetailsService;
 import com.starter.starter_demo.exception.UserAccountDisabledException;
 import com.starter.starter_demo.exception.UserAccountExpiredException;
 import com.starter.starter_demo.exception.UserAccountLockedException;
@@ -18,7 +17,7 @@ import com.starter.starter_demo.exception.UserPasswordExpiredException;
 @RestControllerAdvice
 public class UserExceptionController {
 
-	private static final Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserExceptionController.class);
 
 	@ExceptionHandler(value = UserAccountDisabledException.class)
 	public ApiResultError exception(UserAccountDisabledException exception) {

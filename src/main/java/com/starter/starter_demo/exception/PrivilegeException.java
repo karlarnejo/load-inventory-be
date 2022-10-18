@@ -14,12 +14,11 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.starter.starter_demo.constants.ERR_CONSTANTS;
-import com.starter.starter_demo.crud.service.JwtUserDetailsService;
 
 public class PrivilegeException implements AccessDeniedHandler {
 
 	final private UUID error_UUID = UUID.randomUUID();
-	private static final Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
+	private static final Logger logger = LoggerFactory.getLogger(PrivilegeException.class);
 
 	/* Keeping this for future modification on returning ApiResultError
 	 * instead of the void handle()
