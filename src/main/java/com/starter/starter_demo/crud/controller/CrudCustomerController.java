@@ -20,7 +20,7 @@ import com.starter.starter_demo.crud.service.CustomerService;
 
 @RestController
 @RequestMapping("/crud/customer")
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
 public class CrudCustomerController {
 	
 	@Autowired

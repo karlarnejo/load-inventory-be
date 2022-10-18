@@ -15,7 +15,7 @@ import com.starter.starter_demo.crud.models.AuthenticationModel;
 import com.starter.starter_demo.crud.service.JwtUserDetailsService;
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
 public class JwtAuthenticationController {
 
 	@Autowired

@@ -50,6 +50,7 @@ public class PrivilegeException implements AccessDeniedHandler {
                 + ", \"message\": \"" + ERR_CONSTANTS.NOT_ENOUGH_AUTHORITY + "\", "
                 + "\"transactionId\": \"" + error_UUID.toString() + "\"}");
             } catch (IOException e) {
+        		logger.error(ERR_CONSTANTS.RUNTIME_EXCEPTION + " Stacktrace cause: {} Transaction ID: {}.", ERR_CONSTANTS.NO_STACKTRACE, error_UUID);
                 throw new RuntimeException(e);
             }
         }

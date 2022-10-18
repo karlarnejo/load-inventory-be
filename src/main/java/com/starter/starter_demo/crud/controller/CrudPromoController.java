@@ -13,7 +13,7 @@ import com.starter.starter_demo.crud.service.PromoService;
 
 @RestController
 @RequestMapping("/crud/promo")
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
 public class CrudPromoController {
 
 	@Autowired
