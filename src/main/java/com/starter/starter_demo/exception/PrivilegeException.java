@@ -46,9 +46,11 @@ public class PrivilegeException implements AccessDeniedHandler {
 
                 response.setStatus(HttpStatus.FORBIDDEN.value());
                 response.setContentType("application/json");
-                response.getWriter().write("{ \"status\": " + HttpStatus.FORBIDDEN.value() 
-                + ", \"message\": \"" + ERR_CONSTANTS.NOT_ENOUGH_AUTHORITY + "\", "
-                + "\"transactionId\": \"" + error_UUID.toString() + "\"}");
+                response.getWriter().write(
+            		"{ \"status\": " + HttpStatus.FORBIDDEN.value() 
+	                + ", \"message\": \"" + ERR_CONSTANTS.NOT_ENOUGH_AUTHORITY + "\", "
+	                + "\"transactionId\": \"" + error_UUID.toString() + "\"}"
+                );
             } catch (IOException e) {
         		logger.error(ERR_CONSTANTS.RUNTIME_EXCEPTION + " Stacktrace cause: {} Transaction ID: {}.", ERR_CONSTANTS.NO_STACKTRACE, error_UUID);
                 throw new RuntimeException(e);
